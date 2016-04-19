@@ -1,0 +1,90 @@
+/********************
+ 
+ *** Introduction ***
+ 
+ ********************/
+
+ 
+
+First thing to do --
+ 
+1) Add myself to the course discussion
+
+ 
+
+Seven Reasons to start a web/mobile application business --
+ 
+1) It's very rewarding work
+ 
+2) The bulk of money is in  design & devolopment
+ 
+3) Margins in web development are amazing
+ 
+4) You set yourself up for startup success in the future
+ 
+5) You get exposure to a variety of online disciplines
+ 
+6) You can set it and forget it
+ 
+7) You can add development as an extra service you offer
+
+
+
+How to add development services to exisiting business --
+
+1) List it on your website
+
+2) Add it to your branding
+
+3) 
+Attach development estimates to all projects
+** Estimates are helpful for clients
+
+Who is this course for? --
+1) Anyone can do it
+2) Coding skills are not mandatory
+3) You can do it part-time
+4) What skills do you need? Opinions, interest
+5) Three main groups of people who can benefit
+-- Programmers
+-- Non-technical euntrpreneurs
+-- Freelancer
+
+/**********************
+ 
+ *** The Essentials ***
+ 
+ **********************/
+
+ 
+
+Understanding the "Dev Stack" --
+
+1) L.A.M.P - Linux, Apache, MySQL, PHP
+2) Design Layer - HTML, JS, CSS
+
+How to pick a stack --
+1) If you are a programmer use the stack your are used to
+2) The Languages in the stack do not matter, focus on the people
+3) Focus on the people that give the best results
+
+The startup timeline --
+1) A lot of work upfront
+2) Think about strategy
+3) Decide what you want to do
+4) Do some research on the market
+5) Assess your skills and interests
+6) Establish a web presence
+7) Focus on how to capture clients -- Can do both at the same time
+8) The trough of sorrow
+9) People will always need development services
+10) It takes time
+11) You will figure out your reliable team
+
+
+How does this work as a programmer/non technical --
+1) Focussing on sub-contracting
+2) Lead Developer or part-time dev, project manager
+3) Look for good subcontractors
+
+How do development firms typically work? --

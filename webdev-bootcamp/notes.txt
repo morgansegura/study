@@ -1,0 +1,18 @@
+var lis = document.querySelectorAll("li");
+
+for( var 1 = 0; i < lis.length; i++){
+    lis[i].addeventListener("click", function(){
+        this.style.color = "pink";
+    });
+}
+
+// Declared function
+var button = document.querySelector("button"),
+    paragraph = document.querySelector("p");
+    
+buttton.addEventListener("click", changeText);
+
+function changeText() {
+    paragraph.textContent = "Someone Licked the button";
+}
+

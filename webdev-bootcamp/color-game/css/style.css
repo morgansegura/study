@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #232323;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.square {
+    background: purple;
+    width: 30%;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -o-border-radius: 30px;
+    float: left;
+    padding-bottom: 30%;
+    margin: 1.66%;
+}
+h1 {
+    color: white;
+}
+
+#stripe {
+    background: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #000;
+}
+
+.selected {
+    background: blue;
+    color: #fff;
+}

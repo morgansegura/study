@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8" />        
+        <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+        <meta name=viewport content="width=device-width,initial-scale=1">
+        <meta name=keywords content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development"> 
+        <meta name=author content="Morgan Segura"> 
+        <title> JS Color Game </title>
+        <!-- CDN Hosted Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> 
+        <!-- Local CSS File -->
+        <link href="css/style.css" rel="stylesheet" /> 
+        <!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->    
+    </head>
+    <body>
+        <h1>The Great <span id="colorDisplay">RGB</span> Color Game</h1>
+
+        <div id="stripe">
+            <button id="reset">New Colors</button>
+            <span id="message"></span>
+            <button id="easyBtn">Easy</button>
+            <button id="hardBtn" class="selected">Hard</button>
+        </div>
+
+        <div class="container">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+    </body>
+    <script src="js/script.js"></script>
+</html>
