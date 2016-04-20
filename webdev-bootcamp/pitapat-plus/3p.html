@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8" />        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width,initial-scale=1"> 
+        <meta name="description" content="Pita Pat Plus"> 
+        <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development"> 
+        <meta name="author" content="Morgan Segura"> 
+        <title> Pita Pat Plus | (3P) </title>
+
+        <!-- Local CSS Files -->
+        <link href="assets/css/reset.css" rel="stylesheet" /> 
+        <link href="assets/css/style.css" rel="stylesheet" /> 
+        <!-- jQuery.js https://jquery.com/download/ -->
+        <script type="text/javascript" src="assets/js/lib/jquery-2.2.3.min.js"></script>
+        <!-- Paper.js http://paperjs.org -->
+        <script type="text/javascript" src="assets/js/lib/paper-full.min.js"></script>
+        <!-- Howler.js https://cdnjs.com/libraries/howler -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.29/howler.min.js"></script>
+        <!-- Google Fonts: Roboto by: Christian Robertson -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+                <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->  
+       
+        <!-- Paper.js script for Canvas -->
+        <script type="text/paperscript" canvas="myCanvas">
+
+            var circles = [];
+            
+            function onKeyDown(event){    
+                
+                if(keyData[event.key]){
+
+                    var maxPoint = new Point(view.size.width, view.size.height);
+                    var randomPoint = Point.random();
+                    var point = maxPoint * randomPoint;
+                    var newCircle = new Path.Circle(point, 500);
+                    newCircle.fillColor = keyData[event.key].color;
+                    keyData[event.key].sound.play();
+                    // when a key is pressed, set the content of the text item:
+                    circles.push(newCircle);
+                }
+            }
+
+            function onFrame(event){
+                for(var i = 0; i < circles.length; i++){
+                    circles[i].fillColor.hue += 1;
+                    circles[i].scale(.9);
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <!-- HTML5 Canvas -->
+        <canvas id="myCanvas" resize></canvas>
+        <div class="container">
+            <div id="keyChart">
+                <h2 class="clearfix"><i class="fa fa-keyboard-o fa-1x" aria-hidden="true"></i> <span>Selectable Keys</span></h2>
+                <ul id="keyList" class="clearfix"></ul>
+            </div>
+        </div> <!-- #container -->
+        <script type="text/javascript" src="assets/js/data.js"></script>        
+        <script type="text/javascript" src="assets/js/script.js"></script> 
+    </body>
+</html>
