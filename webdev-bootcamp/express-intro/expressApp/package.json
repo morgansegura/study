@@ -1,0 +1,15 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "My first express app",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test app"
+  },
+  "author": "Morgan Segura",
+  "license": "ISC"
+}

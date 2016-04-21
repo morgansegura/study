@@ -1,18 +1,31 @@
-var lis = document.querySelectorAll("li");
+// Plugins for brackets:
 
-for( var 1 = 0; i < lis.length; i++){
-    lis[i].addeventListener("click", function(){
-        this.style.color = "pink";
-    });
-}
+- Postman
+- shell
+- git
+- theme: tonight's specials
+- js lint
+- gulp
+- vagrant
+- text-count
+- node.js bindings
+- extract
 
-// Declared function
-var button = document.querySelector("button"),
-    paragraph = document.querySelector("p");
-    
-buttton.addEventListener("click", changeText);
 
-function changeText() {
-    paragraph.textContent = "Someone Licked the button";
-}
+'npm init' creates a new package.json for us
 
+Express Routes:
+
+app.get('*', function(req, res){ res.send("404");});
+
+- Route variables or route parameters
+ -
+
+app.get('/directory/:subdirectory', function(req, res){ res.send("Welcome to a pattern of sub directory");});
+
+app.get('/directory/:subdirectory/comments/:id/:title/', function(req, res){ res.send("Welcome to a pattern of sub directory");});
+
+
+Rendering express templates
+
+- res.render();

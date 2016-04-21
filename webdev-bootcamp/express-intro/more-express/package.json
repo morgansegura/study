@@ -1,0 +1,14 @@
+{
+  "name": "more-express",
+  "version": "1.0.0",
+  "description": "Express app from scratch with templates",
+  "main": "app.js",
+  "scripts": {
+    "test": "test app"
+  },
+  "author": "Morgan Segura",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
