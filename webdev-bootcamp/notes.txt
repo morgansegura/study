@@ -29,3 +29,93 @@ app.get('/directory/:subdirectory/comments/:id/:title/', function(req, res){ res
 Rendering express templates
 
 - res.render();
+
+app.get("/love/:word", function(req, res){
+    var word = req.params.word
+    res.render("love.ejs", {word: word});
+});
+
+#EJS Control Flow
+
+* Show examples of control flow in EJS templates
+* Write if statements in an EJS file
+* Write loops in an EjS file
+
+Loop through all posts
+    make an entry div
+        title
+        tagline
+        ...
+        
+#Styles and Partials
+
+* Show how to properly include public assets
+* Properly configure our app to use EJS
+* Use partials to dry up our code
+
+// Declare public directory
+app.use(express.static("public"));
+
+// Declare EJS for ease of use
+app.set("view engine", "ejs");
+
+<%= include partials/header %>
+
+#Post Requests
+
+* Write post routes, and test them with Postman
+* Use a form to send a request
+* Use body parser to get form data
+
+
+#YelpCamp
+
+* Add Landing Page
+* Add Campgrounds page that lists all campgrounds
+
+Each campground has:
+* Name
+* Image
+
+
+#Layout and Styling
+
+* Create our header and footer partials
+* Add in bootstrap
+
+
+#Creating New Campgrounds
+
+* Setup new campground POST route
+* Add in body-parser
+* Setup route to show form
+* Add basic unstyled form
+
+
+
+#Databases
+
+##Intro to DBs
+
+* what is a database?
+
+* SQL vs, NoSQL
+
+# Our First Mongo Commands
+* mongod
+* mongo
+* help
+* showdbs
+* use - use <db name>
+* insert - db.insert({})
+* find - db.<db name>.find()
+* update - db.<db name>.update()
+* remove
+
+#Mongoose
+
+
+
+
+
+
