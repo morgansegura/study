@@ -64,7 +64,7 @@ app.get("/campgrounds/new", function(req, res){
 // Show details page
 app.get("/campgrounds/:id", function(req, res){
     // find the campground with the correct id
-    Campground.FindById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id, function(err, foundCampground){
         if(err) {
             console.log(err);
         } else {
