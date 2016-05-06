@@ -117,5 +117,14 @@ Each campground has:
 
 
 
+# Associtions
 
+##Intro to Associations
+* Define associations
+
+## Embedding Data
+User
+Post
+
+## Referencing Data
 

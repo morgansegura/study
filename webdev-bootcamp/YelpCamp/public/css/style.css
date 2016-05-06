@@ -1,64 +1,13 @@
 body {
-    font-family: 'Roboto', sans-serif;    
+    font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 }
-canvas {
-    width: 100%;
-    background: #000000; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #000000 , #53346D); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #000000 , #53346D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    height: 100%;
+.thumbnail {
+	padding: 0;
 }
-
-.container {
-    position: relative;
-    width: 100%;
-    height: 100%;    
+.thumbnail img {
+	width: 100%;
 }
-#keyChart {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    color: rgb(255, 255, 255);
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -ms-box-sizing: border-box;    
-}
-#keyChart h2 {
-    height: 25px;
-    line-height: 25px;
-    text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.5);
-    padding-left: 10px;
-    font-weight: 700;
-}
-
-#keyChart h2 i {
-    padding-right: 10px;
-
-}
-
-#keyChart li {
-    height: 45px;
-    line-height: 40px;
-    float: left;
-    width: 45px;
-    text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -o-border-radius: 5px;    
-    box-sizing: border-box;
-    margin: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -ms-box-sizing: border-box;     
-}
-#keyChart li:nth-child(14) {
-    clear: both;
+.thumbnail .caption-full {
+	padding: 9px;
 }

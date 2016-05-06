@@ -1,26 +1,24 @@
 var express     = require("express")
     app         = express(),
     bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose");
+    mongoose    = require("mongoose"),
+    Campground  = require("./models/campground"),
+    Comment  	= require("./models/comment"),
+    seedDB      = require("./seeds");
 
-mongoose.connect("mongodb://localhost/yelp_camp");
+// connect to the DB
+mongoose.connect("mongodb://localhost/yelp_camp_v4");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
-
-// Schema setup
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
+// setup asset direction
+app.use(express.static(__dirname + "/public"));
+// seed the DB
+seedDB();
 
 // home route
 app.get("/", function(req, res){
-    res.render("home");
+    res.render("landing");
 });
 
 // Camprounds route
@@ -29,7 +27,7 @@ app.get("/campgrounds", function(req, res){
        if(err){
            console.log(err);
        } else {
-           res.render("index", {campgrounds: allCampgrounds});
+           res.render("campgrounds/index", {campgrounds: allCampgrounds});
        }
     });
 });
@@ -53,10 +51,16 @@ app.post("/campgrounds", function(req, res){
 
 });
 
-
 // New Camprounds route
 app.get("/campgrounds/new", function(req, res){
-    res.render("new");
+	Campground.findById(req.params.id, function(err, campground){
+		if(err){
+			console.log(err);
+		} else {
+			res.render("campgrounds/new", {campground: campground});
+		}
+	})
+
 
 });
 
@@ -64,19 +68,59 @@ app.get("/campgrounds/new", function(req, res){
 // Show details page
 app.get("/campgrounds/:id", function(req, res){
     // find the campground with the correct id
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err) {
             console.log(err);
         } else {
             // Show the show page
-            res.render("show", {campground: foundCampground});            
+            res.render("campgrounds/show", {campground: foundCampground});            
         }
     });
-
-
 });
 
-// Open Server at port
+
+// ====
+// Comments Routes
+// ====
+
+
+// Show details page
+app.get("/campgrounds/:id/comments/new", function(req, res){
+	Campground.findById(req.params.id, function(err, campground){
+		if(err){
+			console.log(err);
+		} else {
+			res.render("comments/new", {campground: campground});
+		}
+	})	
+});
+
+// Show details page
+app.post("/campgrounds/:id/comments", function(req, res){
+	Campground.findById(req.params.id, function(err, campground){
+		if(err){
+			console.log(err);
+			res.redirect("/campgrounds");
+		} else {
+
+			Comment.create(req.body.comment, function(err, comment){
+				if(err){
+					console.log(err);	
+				} else {
+					campground.comments.push(comment);
+					campground.save();
+					res.redirect("/campgrounds/" + campground._id);
+				}
+			});
+
+		}
+	})	
+});
+
+// ====
+// Server
+// ====
+
 // var port = process.env.PORT, process.env.IP; // production port
 var port = 8080; // develop port
 
