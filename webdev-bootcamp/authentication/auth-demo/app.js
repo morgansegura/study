@@ -11,7 +11,7 @@ var express 				= require("express"),
 /*====
  ==== SETUP DB
  ====*/
-mongoose.connect("mongodb://localhost/auth_demo_app1");
+mongoose.connect("mongodb://localhost/auth_demo_test1");
 
 /*====
  ==== SETUP EJS TEMPLATES
