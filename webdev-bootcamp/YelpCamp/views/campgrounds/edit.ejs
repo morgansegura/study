@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<section class="container">
+    <header>
+        <h1>Edit <%= campground.name %>
+            <span><a class="btn btn-info btn-xs" href="/campgrounds/new" title="">Add New Campground</a></span>
+        </h1>
+        <p><mark>Tell us all about your favorite campground.</mark></p>
+        <hr />
+    </header>
+    <form class="jumbotron" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+        <div class="form-group">
+            <label class="sr-only" for="campName">Camp Name</label>    
+            <input id="campName" class="form-control" name="campground[name]" type="text" value="<%= campground.name %>">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="campImage">Camp Image</label>
+            <input id="campImage" class="form-control" name="campground[image]" type="text" value="<%= campground.image %>">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="campDescription">Camp Description</label>
+            <textarea id="campDescription" class="form-control" name="campground[description]" value="<%= campground.description %>"></textarea>
+        </div>
+        <button class="btn btn-primary btn-lg">Submit!</button>
+    </form>
+</section>
+<% include ../partials/footer %>

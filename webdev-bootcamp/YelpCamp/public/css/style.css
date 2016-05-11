@@ -19,3 +19,7 @@ body {
 .userclass {
 	text-transform: capitalize;
 }
+
+#delete-form {
+    display: inline;
+}

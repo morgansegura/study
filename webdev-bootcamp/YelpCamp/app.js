@@ -2,7 +2,8 @@ var express     	= require("express"),
     mongoose    	= require("mongoose"),
 	passport    	= require("passport"),
     bodyParser  	= require("body-parser"),		
-    LocalStrategy	= require("passport-local"),		
+    LocalStrategy	= require("passport-local"),	
+    methodOverride	= require("method-override"),		
     Campground  	= require("./models/campground"),
     Comment  		= require("./models/comment"),
 	User 			= require("./models/user"),
@@ -35,6 +36,7 @@ app.set("view engine", "ejs");
  ==== SETUP ASSET GLOBAL PATH
  ====*/
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"))
 
 /*====
  ==== SEED THE DB
