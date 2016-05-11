@@ -1,12 +1,13 @@
-var express = require("express"),
-	router	= express.Router();
+var express     = require("express"),
+	router	    = express.Router(),
+    Campground  = require("../models/campground");
 
 /*====
  ==== CAMPGROUND ROUTES
  ====*/
 
 // ==* Campgrounds Route *==
-router.get("/campgrounds", function(req, res){
+router.get("/", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
        if(err){
            console.log(err);
@@ -17,7 +18,7 @@ router.get("/campgrounds", function(req, res){
 });
 
 // ==* Campgrounds POST Route *==
-router.post("/campgrounds", function(req, res){
+router.post("/", function(req, res){
     // get data back from form and add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
@@ -29,14 +30,14 @@ router.post("/campgrounds", function(req, res){
             console.log(err);
         } else {
             // redirect bck to campgrounds page    
-            res.redirect("/campgrounds");            
+            res.redirect("/");            
         }
     });
 
 });
 
 // ==* New Campgrounds route *==
-router.get("/campgrounds/new", isLoggedIn,  function(req, res){
+router.get("/new",  function(req, res){
 	Campground.findById(req.params.id, function(err, campground){
 		if(err){
 			console.log(err);
@@ -48,7 +49,7 @@ router.get("/campgrounds/new", isLoggedIn,  function(req, res){
 
 
 // ==* Show details page
-router.get("/campgrounds/:id", function(req, res){
+router.get("/:id", function(req, res){
     // find the campground with the correct id
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err) {

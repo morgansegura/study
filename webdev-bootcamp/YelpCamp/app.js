@@ -13,8 +13,8 @@ var express     	= require("express"),
  ==== INCLUDE ROUTES
  ====*/
 var indexRoutes = require("./routes/index"),
-	campgroundRoutes = require("./routes/comments"),
-	commentRoutes = require("./routes/campgrounds"),
+	campgroundRoutes = require("./routes/campgrounds"),
+	commentRoutes = require("./routes/comments");
 
 /*====
  ==== SETP THE DB
@@ -70,9 +70,9 @@ app.use(function(req, res, next){
 /*====
  ==== USE ROUTES
  ====*/
-app.use(indexRoutes);
-app.use(campgroundRoutes);
-app.use(commentRoutes);
+app.use("/", indexRoutes);
+app.use("/campgrounds", campgroundRoutes);
+app.use("/campgrounds/:id/comments", commentRoutes);
 
 /*====
  ==== START THE SERVER
