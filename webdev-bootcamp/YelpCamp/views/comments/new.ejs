@@ -7,13 +7,15 @@
         <hr />
     </header>
     <form class="jumbotron" action="/campgrounds/<%= campground._id %>/comments" method="POST">
+        <!--
         <div class="form-group">
             <label class="sr-only" for="campImage">Camp Image</label>
             <input id="campImage" class="form-control" name="comment[author]" type="text" placeholder="Author Name">
         </div>
+-->
         <div class="form-group">
             <label class="sr-only" for="campDescription">Camp Description</label>
-            <textarea id="campDescription" class="form-control" name="comment[text]" placeholder="Comment"></textarea>
+            <textarea id="campDescription" class="form-control" name="comment[text]" placeholder="Enter a Comment"></textarea>
         </div>
         <button class="btn btn-primary btn-lg">Submit!</button>
     </form>
