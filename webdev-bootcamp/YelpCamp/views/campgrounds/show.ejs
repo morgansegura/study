@@ -44,16 +44,28 @@
 						<% } %>
 					</div>										
 				</div>
-					
+				
 				<!-- Comments -->
-				<div class="well">
+				<div class="well clearfix">
+
 					<!-- Add a new Comment -->
-					<div class="text-right">
+					<div class="pull-right">
 						<a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
 					</div>
+					
+					<% if( campground.comments.length === 0 ){ %>	
+					<!-- Add a new Comment -->
+					<div id="delete-form" class="pull-left">
+						<p class="">There are currently no comments.</p>
+					</div>
+					
+					<% } else {%>					
 					<hr />
+					<% } %>
+					
 					<!-- Comments Loop -->
 					<% campground.comments.forEach( function(comment) { %>
+					
 					<div class="row">
 						<div class="col-md-12">
 							<strong class="userclass"><%= comment.author.username %></strong>
@@ -62,11 +74,22 @@
 							</span>
 							<p>									
 								<%= comment.text %>
-							</p>								
+							</p>
+							<% if( currentUser && comment.author.id.equals(currentUser._id) ){ %>
+							<!-- Edit  -->							
+							<a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+													
+							<!-- Delete  -->
+							<form id="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+								<button class="btn btn-xs btn-danger">Delete</button>
+							</form>
+							
+							<% } %> <!-- End currentUser-->
+							
 						</div>
 					</div>
-					<% }) %>						
-				</div><!-- // comments -->					
+					<% }) %> <!-- End forEach -->						
+				</div><!-- // comments -->							
 			</div> <!-- // col-md-9 -->
 		</div><!-- // row -->
     </section><!-- // section -->
