@@ -66,19 +66,15 @@ router.get("/:id", function(req, res){
 });
 
 // ==* Campgrounds Edit Route *==
-router.get("/:id/edit", function(req, res){
-    Campground.findById(req.params.id, function(err, foundCampground){
-        if(err){
-            res.redirect("/campgrounds");
-        } else {
-            res.render("campgrounds/edit", {campground: foundCampground})
-        }
-    })
+router.get("/:id/edit", checkOwnership, function(req, res){
+	Campground.findById(req.params.id, function(err, foundCampground){
+		res.render("campgrounds/edit", {campground: foundCampground});
+	});
 });
 
 // ==* Campgrounds Edit PUT Route *==
-router.put("/:id", function(req, res){
-    //var data = {name: , image: , };
+router.put("/:id", checkOwnership, function(req, res){
+
     Campground.findByIdAndUpdate(req.params.id, req.body.campground,  function(err, foundCampground){
         if(err){
             res.redirect("/campgrounds");
@@ -90,7 +86,7 @@ router.put("/:id", function(req, res){
 });
 
 // ==* Campgrounds DELETE Route *==
-router.delete("/:id", function(req, res){
+router.delete("/:id", checkOwnership, function(req, res){
     Campground.findByIdAndRemove(req.params.id, req.body.campground,  function(err, foundCampground){
         if(err){
             res.redirect("/campgrounds");
@@ -100,13 +96,41 @@ router.delete("/:id", function(req, res){
     })
 });
 
-//*== Middleware *==
+/*====
+ ==== CAMPGROUND MIDDLEWARE
+ ====*/
 function isLoggedIn(req, res, next){
 	if( req.isAuthenticated()){
 		return next();
 	}
 	res.redirect("/login");
 }
+
+// Does the user own this post
+function checkOwnership(req, res, next) {
+// if the user is logged in
+	if(req.isAuthenticated()){
+		// Does the user own the campground
+		Campground.findById(req.params.id, function(err, foundCampground){
+			if(err){
+				res.redirect("back");
+			} else {
+				// does the user own the post?
+				if(foundCampground.author.id.equals(req.user._id)){
+					next();
+				} else {
+					// the user doesn not have permission
+					res.redirect("back");
+				}
+			}
+		});		
+	} else {
+		// go back to the last page the user was on
+		res.redirect("back");
+	}		
+}
+
+
 
 /*====
  ==== EXPORT ROUTES
