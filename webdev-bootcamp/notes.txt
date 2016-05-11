@@ -128,3 +128,8 @@ Post
 
 ## Referencing Data
 
+
+# Git NOTES
+** Deploying from Heroku
+
+

@@ -1,5 +1,6 @@
 var express     	= require("express"),
     mongoose    	= require("mongoose"),
+	flash	    	= require("connect-flash"),
 	passport    	= require("passport"),
     bodyParser  	= require("body-parser"),		
     LocalStrategy	= require("passport-local"),	
@@ -36,12 +37,21 @@ app.set("view engine", "ejs");
  ==== SETUP ASSET GLOBAL PATH
  ====*/
 app.use(express.static(__dirname + "/public"));
+
+/*====
+ ==== SETUP METHOD OVERRIDE
+ ====*/
 app.use(methodOverride("_method"))
+
+/*====
+ ==== SETUP CONNECT-FLASH
+ ====*/
+app.use(flash());
 
 /*====
  ==== SEED THE DB
  ====*/
-seedDB();
+// seedDB();
 
 /*====
  ==== SETUP LOCAL SESSIONS
@@ -66,6 +76,8 @@ passport.deserializeUser(User.deserializeUser());
  ====*/
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
+	res.locals.error = req.flash("error");
+	res.locals.success = req.flash("success");
 	next();
 });
 
