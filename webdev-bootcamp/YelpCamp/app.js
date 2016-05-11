@@ -91,13 +91,13 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 /*====
  ==== START THE SERVER
  ====*/
+/*
 var port = 8080; // develop port
 
 app.listen(port, function(){
     console.log("sever opened at port: " + port);
 });
-/*
+*/
 var listener = app.listen(process.env.PORT, process.env.IP, function(){
 	console.log("Server is live on port " + listener.address().port);
 });
-*/
