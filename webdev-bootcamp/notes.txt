@@ -132,4 +132,14 @@ Post
 # Git NOTES
 ** Deploying from Heroku
 
+heroku create
+
+git push heroku master
+
+heroku logs
+
+heroku run ls
+
+export DATABASEURL=mongodb://localhost/yelp_camp_v4
+mongodb://morgansegura:SeGuRa-1980mongolabyelpcamp@ds021182.mlab.com:21182/yelpcamp
 
