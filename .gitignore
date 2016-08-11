@@ -1,0 +1,7 @@
+git add .
+node_modules
+.idea
+.DS_Store
+_ide_helper.php
+npm-debug.log
+
