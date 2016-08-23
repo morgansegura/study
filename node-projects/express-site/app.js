@@ -10,9 +10,22 @@ app.set('view engine', 'jade')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
-    res.rednder('index');
+    res.render('index');
+});
+
+app.get('/about', function(req, res){
+    res.render('about');
+});
+
+app.get('/contact', function(req, res){
+    res.render('contact');
+});
+
+app.get('/contact/post', function(req, res){
+    res.render('index');
 });
 
 app.listen(3000);
