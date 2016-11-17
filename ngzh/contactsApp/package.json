@@ -1,0 +1,15 @@
+{
+  "name": "contactsapp",
+  "version": "1.0.0",
+  "description": "Create a contacts app in lesson",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Morgan Segura",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}
