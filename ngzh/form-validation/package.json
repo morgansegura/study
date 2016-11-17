@@ -1,0 +1,15 @@
+{
+  "name": "form-validation",
+  "version": "1.0.0",
+  "description": "Form validation with angularjs 1.x",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Morgan Segura",
+  "license": "ISC",
+  "devDependencies": {
+    "angular-auto-validate": "^1.19.0",
+    "angular-ladda": "^0.4.3"
+  }
+}
