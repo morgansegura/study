@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Things</title>
-    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./node_modules/bootstrap-additions/dist/bootstrap.min.css" type="text/css" rel="stylesheet">
     <link href="./node_modules/ladda/dist/ladda-themeless.min.css" type="text/css" rel="stylesheet">
     <link href="./css/main.css" type="text/css" rel="stylesheet">
 
@@ -47,7 +48,7 @@
                                 </select>
                             </div>
 
-                            <button class="btn btn-primary pull-right" ng-click="showCreatModal()">Create</button>
+                            <button class="btn btn-primary pull-right" ng-click="showCreateModal()">Create</button>
                             <div class="clearfix"></div>
 
                         </form>
@@ -66,7 +67,7 @@
                                     <span ng-click="order = 'email'" class="glyphicon glyphicon-menu-up"></span>
                                     <span ng-click="order = '-email'" class="glyphicon glyphicon-menu-down"></span>
                                 </th>
-                                <th>Birthday</th>
+                                <th>Phone Number</th>
                             </tr>
 
                             <tr ng-repeat="person in contacts.persons"
@@ -74,10 +75,14 @@
                             'background-color': person.email == contacts.contacts.selectedPerson.email ? '#eee' : ''
                             }"
                                 ng-click="contacts.selectedPerson = person">
-                                <td>{{ $index }}</td>
+                                <td>
+                                    <img ng-src="{{person.photo}}"
+                                         class="img-circle profile-photo"
+                                    />
+                                </td>
                                 <td>{{ person.name }}</td>
                                 <td>{{ person.email }}</td>
-                                <td>{{ person.birthdate | date: "longDate" }}</td>
+                                <td>{{ person.phonenumber}}</td>
                             </tr>
                         </table>
                         <!-- Warn when there are no matching contacts -->
@@ -112,35 +117,8 @@
                         <form class="form-horizontal"
                               ng-submit="save()"
                               novalidate>
-                        <ng-include src="'/templates/form.html'"></ng-include>
-                    </form>
-
-
-
-                        <!--
-                        <dl>
-                            <dt>Name</dt>
-                            <dd>{{contacts.selectedPerson.name}}</dd>
-
-                            <dt>Email</dt>
-                            <dd>{{contacts.selectedPerson.email}}</dd>
-
-                            <dt>Birthday</dt>
-                            <dd>{{contacts.selectedPerson.birthdate | date: "longDate"}}</dd>
-
-                            <dt>Phone Number</dt>
-                            <dd>{{contacts.selectedPerson.phonenumber}}</dd>
-
-                            <dt>Address</dt>
-                            <dd>{{contacts.selectedPerson.address}}</dd>
-
-                            <dt>City</dt>
-                            <dd>{{contacts.selectedPerson.city}}</dd>
-
-                            <dt>Country</dt>
-                            <dd>{{contacts.selectedPerson.country}}</dd>
-                        </dl>
-                        -->
+                        <ng-include src="'./templates/form.html'"></ng-include>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -151,7 +129,7 @@
     <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="./node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
     <script src="./node_modules/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
-    <script src="./node_modules/spin.js/spin.min.js"></script>
+    <script src="./node_modules/spin/dist/spin.min.js"></script>
     <script src="./node_modules/angular-spinner/angular-spinner.min.js"></script>
     <script src="./node_modules/ladda/dist/ladda.min.js"></script>
     <script src="./node_modules/angular-ladda/dist/angular-ladda.min.js"></script>

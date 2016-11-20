@@ -1,0 +1,30 @@
+body {
+    margin-top: 100px;
+}
+
+
+.spinner {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 40px 0;
+    p {
+        margin-top: 20px;
+    }
+}
+
+.table tr td {
+
+}
+.table {
+    tr {
+        td {
+            verticle-align: middle;
+            .profile-photo {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
