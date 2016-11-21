@@ -110,23 +110,10 @@ app.controller('PersonListController', function ($scope, $modal, ContactService)
             });
     }
 
-    // Watch search for newVal
-    $scope.$watch('search', function (newVal, oldVal) {
-       if (angular.isDefined(newVal)) {
-           $scope.contacts.doSearch(newVal)
-       }
-    });
-    // Watch sorting
-    $scope.$watch('order', function (newVal, oldVal) {
-       if (angular.isDefined(newVal)) {
-           $scope.contacts.doOrder(newVal)
-       }
-    });
-
 });
 
 // Contact Service
-app.service('ContactService', function(Contact, $q, toaster) {
+app.service('ContactService', function(Contact, $q, $rootScope, toaster) {
     /* when dealing with APIs it is a good practice
     to have at least 3 variables assigned in the object */
 
@@ -146,18 +133,17 @@ app.service('ContactService', function(Contact, $q, toaster) {
         'selectedPerson': null,
         'persons': [],
         'search': null,
-        'doSearch': function (search) {
+        'ordering': 'name',
+        'doSearch': function () {
             self.hasMore = true;
             self.page = 1;
             self.persons = [];
-            self.search = search;
             self.loadContacts();
         },
-        'doOrder': function (order) {
+        'doOrder': function () {
             self.hasMore = true;
             self.page = 1;
             self.persons = [];
-            self.ordering = order;
             self.loadContacts();
         },
         'loadContacts': function () {
@@ -227,10 +213,28 @@ app.service('ContactService', function(Contact, $q, toaster) {
                 d.resolve();
             });
             return d.promise;
+        },
+        'watchFilters': function () {
+            $rootScope.$watch(function () {
+               return self.search;
+            }, function (newVal) {
+                if (angular.isDefined(newVal)) {
+                    self.doSearch();
+                }
+            });
+
+            $rootScope.$watch(function () {
+                return self.ordering;
+            }, function (newVal) {
+                if (angular.isDefined(newVal)) {
+                    self.doOrder();
+                }
+            });
         }
     };
 
     self.loadContacts();
+    self.watchFilters();
 
     return self;
 });
