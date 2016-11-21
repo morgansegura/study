@@ -63,8 +63,16 @@ app.filter('defaultImage', function () {
 app
 
 // Person Detail Controller
-app.controller('PersonDetailController', function ($scope, $stateParams, $modal, ContactService) {
+app.controller('PersonDetailController', function ($scope, $stateParams, $state, $modal, ContactService) {
+
     $scope.contacts = ContactService;
+
+    $scope.contacts.selectedPerson = $scope.contacts.getPerson($stateParams.email);
+
+    $scope.save = function () {
+        $scope.contacts.removeContact($scope.contacts.selectedPerson);
+        $state.go('list');
+    }
 
     $scope.remove = function () {
         $scope.contacts.removeContact($scope.contacts.selectedPerson);
@@ -123,8 +131,13 @@ app.service('ContactService', function(Contact, $q, toaster) {
     to have at least 3 variables assigned in the object */
 
     var self = {
-        'addPerson' : function(person) {
-            this.persons.push(person);
+        'getPerson' : function(email) {
+            for (var i = 0; i < self.persons.length; i++) {
+                var obj = self.persons[i];
+                if (obj.email == email) {
+                    return obj;
+                }
+            }
         },
         'page': 1,
         'hasMore': true,
@@ -178,13 +191,17 @@ app.service('ContactService', function(Contact, $q, toaster) {
             }
         },
         'updateContact': function (person) {
+            var d = $q.defer();
             self.isSaving = true;
             person.$update().then(function () {
                 self.isSaving = false;
                 toaster.pop('success', 'Updated ' + person.name);
+                d.resolve();
             });
+            return d.promise;
         },
         'removeContact': function (person) {
+            var d = $q.defer();
             self.isDeleting = true;
             person.$remove().then(function () {
                 self.isDeleting = false;
@@ -192,7 +209,9 @@ app.service('ContactService', function(Contact, $q, toaster) {
                 self.persons.splice(index, 1);
                 self.selectedPerson = null;
                 toaster.pop('success', 'Deleted ' + person.name);
+                d.resolve();
             });
+            return d.promise;
         },
         'createContact': function (person) {
             var d = $q.defer();

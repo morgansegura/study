@@ -55,7 +55,6 @@
             ng-style="{
                     'background-color': person.email == contacts.contacts.selectedPerson.email ? '#eee' : ''
                     }"
-            ng-click="contacts.selectedPerson = person"
             ui-sref="edit({email:person.email})" >
             <td>
                 <img ng-src="{{person.photo | defaultImage:'./images/avatar-ang.jpg'}}"
