@@ -26,112 +26,9 @@
     <div class="container main-content">
         <toaster-container></toaster-container>
         <div class="row">
-            <div class="col-md-8" ng-controller="PersonListController">
-                <div class="row">
-                    <div class="col-md-12">
-                        <form class="form-inline well well-sm">
-                            <span class="fa fa-search"></span>
+            <ui-view>
 
-                            <div class="form-group">
-                                <input type="input"
-                                       class="form-control"
-                                       id="name"
-                                       ng-model="search"
-                                       placeholder="Search name...">
-                            </div>
-
-                            &nbsp;<span class="fa fa-sort"></span>
-
-                            <div class="form-group">
-                                <select class="form-control"
-                                        ng-model="order">
-                                    <option value="name">Name (ASC)</option>
-                                    <option value="-name">Name (DES)</option>
-                                    <option value="email">Email (ASC)</option>
-                                    <option value="-email">Email (DES)</option>
-                                </select>
-                            </div>
-
-                            <button class="btn btn-primary pull-right" ng-click="showCreateModal()">Create</button>
-                            <div class="clearfix"></div>
-
-                        </form>
-
-                        <table class="table table-bordered"
-                               infinite-scroll="loadMore()"
-                               infinite-scroll-distance="1"
-                               infinite-scroll-immediate-check="false" >
-                            <tr>
-                                <th class="col-1">#</th>
-                                <th class="col-2">
-                                    <div class="sortables">
-                                        <span ng-click="order = 'name'" class="fa fa-sort-asc"></span>
-                                        <span ng-click="order = '-name'" class="fa fa-sort-desc"></span>
-                                    </div>
-                                    Name
-                                </th>
-                                <th class="col-3">
-                                    <div class="sortables">
-                                        <span ng-click="order = 'email'" class="fa fa-sort-asc"></span>
-                                        <span ng-click="order = '-email'" class="fa fa-sort-desc"></span>
-                                    </div>
-                                    Email
-                                </th>
-                                <th class="col-4">Phone Number</th>
-                            </tr>
-
-                            <tr ng-repeat="person in contacts.persons"
-                                ng-style="{
-                            'background-color': person.email == contacts.contacts.selectedPerson.email ? '#eee' : ''
-                            }"
-                                ng-click="contacts.selectedPerson = person">
-                                <td>
-                                    <img ng-src="{{person.photo | defaultImage:'./images/avatar-ang.jpg'}}"
-                                         class="img-circle profile-photo"
-                                    />
-                                </td>
-                                <td>{{ person.name }}</td>
-                                <td>{{ person.email }}</td>
-                                <td>{{ person.phonenumber}}</td>
-                            </tr>
-                        </table>
-                        <!-- Warn when there are no matching contacts -->
-                        <div ng-show="contacts.persons.length == 0 && !contacts.isLoading">
-                            <div class="alert alert-info">
-                                <p class=text-center>
-                                    No results found for term '{{ search }}'
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Show content isLoading -->
-                        <div class="spinner" ng-show="contacts.isLoading">
-                            <span us-spinner="{radius:8, width:5, length:3, lines:9}"></span>
-                            <p>Loading...</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- Warn when there are no matching contacts -->
-            <div class="col-md-4" ng-controller="PersonDetailController">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Details
-
-                        <button class="btn btn-danger btn-sm pull-right"
-                                ladda="contacts.isDeleting"
-                                ng-click="remove()"> Delete
-                        </button>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-horizontal"
-                              ng-submit="save()"
-                              novalidate>
-                        <ng-include src="'./templates/form.html'"></ng-include>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            </ui-view>
         </div>
     </div>
 
@@ -147,6 +44,7 @@
     <script src="./node_modules/angular-strap/dist/angular-strap.min.js"></script>
     <script src="./node_modules/angular-strap/dist/angular-strap.tpl.min.js"></script>
     <script src="./node_modules/angularjs-toaster/toaster.min.js"></script>
+    <script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <script src="./app.js"></script>
 

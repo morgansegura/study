@@ -6,8 +6,25 @@ var app = angular.module('codecraft', [
     'angular-ladda',
     'mgcrea.ngStrap',
     'toaster',
-    'ngAnimate'
+    'ngAnimate',
+    'ui.router'
 ]);
+
+// Config
+app.config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('list', {
+            url: "/",
+            templateUrl: 'templates/list.html',
+            controller: 'PersonListController'
+        })
+        .state('edit', {
+            url: "/edit/:email",
+            templateUrl: 'templates/edit.html',
+            controller: 'PersonDetailController'
+        })
+    $urlRouterProvider.otherwise('/');
+});
 
 // Config
 app.config(function($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider) {
@@ -35,7 +52,7 @@ app.factory('Contact', function ($resource){
 app.filter('defaultImage', function () {
    return function (input, param) {
         // console.log(input);
-       console.log(param);
+       // console.log(param);
        if (!input) {
             return param;
        }
@@ -43,8 +60,10 @@ app.filter('defaultImage', function () {
    }
 });
 
+app
+
 // Person Detail Controller
-app.controller('PersonDetailController', function ($scope, $modal, ContactService) {
+app.controller('PersonDetailController', function ($scope, $stateParams, $modal, ContactService) {
     $scope.contacts = ContactService;
 
     $scope.remove = function () {
