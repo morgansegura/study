@@ -14,10 +14,19 @@ body {
     }
 }
 
-.table tr td {
-
-}
 .table {
+  .col-1 {
+    width: 10%;
+  }
+  .col-2 {
+    width: 30%;
+  }
+  .col-3 {
+    width: 30%;
+  }
+  .col-4 {
+    width: 30%;
+  }
     tr {
         td {
             verticle-align: middle;
@@ -28,3 +37,45 @@ body {
         }
     }
 }
+
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+.sortables {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  span:first-child {
+    position: absolute;
+    top: 0;
+  }
+  span:last-child {
+    position: absolute;
+    bottom: 0;
+  }
+  span {
+    color: lightgray;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  span:hover {
+    color: #002a80
+  }
+}
+

@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Things</title>
-    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="./node_modules/bootstrap-additions/dist/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./css/paper.min.css" type="text/css" rel="stylesheet">
+    <link href="./node_modules/bootstrap-additions/dist/bootstrap-additions.min.css" type="text/css" rel="stylesheet">
+    <link href="./node_modules/angularjs-toaster/toaster.min.css" type="text/css" rel="stylesheet">
     <link href="./node_modules/ladda/dist/ladda-themeless.min.css" type="text/css" rel="stylesheet">
+    <link href="./node_modules/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
     <link href="./css/main.css" type="text/css" rel="stylesheet">
 
 </head>
@@ -21,12 +24,13 @@
     </div>
 
     <div class="container main-content">
+        <toaster-container></toaster-container>
         <div class="row">
             <div class="col-md-8" ng-controller="PersonListController">
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form-inline well well-sm">
-                            <span class="glyphicon glyphicon-search"></span>
+                            <span class="fa fa-search"></span>
 
                             <div class="form-group">
                                 <input type="input"
@@ -36,7 +40,7 @@
                                        placeholder="Search name...">
                             </div>
 
-                            &nbsp;<span class="glyphicon glyphicon-sort-by-attributes"></span>
+                            &nbsp;<span class="fa fa-sort"></span>
 
                             <div class="form-group">
                                 <select class="form-control"
@@ -58,16 +62,22 @@
                                infinite-scroll-distance="1"
                                infinite-scroll-immediate-check="false" >
                             <tr>
-                                <th>#</th>
-                                <th>Name
-                                    <span ng-click="order = 'name'" class="glyphicon glyphicon-menu-up"></span>
-                                    <span ng-click="order = '-name'" class="glyphicon glyphicon-menu-down"></span>
+                                <th class="col-1">#</th>
+                                <th class="col-2">
+                                    <div class="sortables">
+                                        <span ng-click="order = 'name'" class="fa fa-sort-asc"></span>
+                                        <span ng-click="order = '-name'" class="fa fa-sort-desc"></span>
+                                    </div>
+                                    Name
                                 </th>
-                                <th>Email
-                                    <span ng-click="order = 'email'" class="glyphicon glyphicon-menu-up"></span>
-                                    <span ng-click="order = '-email'" class="glyphicon glyphicon-menu-down"></span>
+                                <th class="col-3">
+                                    <div class="sortables">
+                                        <span ng-click="order = 'email'" class="fa fa-sort-asc"></span>
+                                        <span ng-click="order = '-email'" class="fa fa-sort-desc"></span>
+                                    </div>
+                                    Email
                                 </th>
-                                <th>Phone Number</th>
+                                <th class="col-4">Phone Number</th>
                             </tr>
 
                             <tr ng-repeat="person in contacts.persons"
@@ -128,6 +138,7 @@
     <script src="./node_modules/angular/angular.min.js"></script>
     <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="./node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
+    <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="./node_modules/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
     <script src="./node_modules/spin/dist/spin.min.js"></script>
     <script src="./node_modules/angular-spinner/angular-spinner.min.js"></script>
@@ -135,6 +146,7 @@
     <script src="./node_modules/angular-ladda/dist/angular-ladda.min.js"></script>
     <script src="./node_modules/angular-strap/dist/angular-strap.min.js"></script>
     <script src="./node_modules/angular-strap/dist/angular-strap.tpl.min.js"></script>
+    <script src="./node_modules/angularjs-toaster/toaster.min.js"></script>
 
     <script src="./app.js"></script>
 
