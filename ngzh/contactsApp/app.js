@@ -23,6 +23,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/edit.html',
             controller: 'PersonDetailController'
         })
+        .state('create', {
+            url: "/create",
+            templateUrl: 'templates/edit.html',
+            controller: 'PersonCreateController'
+        })
     $urlRouterProvider.otherwise('/');
 });
 
@@ -60,17 +65,17 @@ app.filter('defaultImage', function () {
    }
 });
 
-app
-
 // Person Detail Controller
 app.controller('PersonDetailController', function ($scope, $stateParams, $state, $modal, ContactService) {
+
+    $scope.mode = 'Edit';
 
     $scope.contacts = ContactService;
 
     $scope.contacts.selectedPerson = $scope.contacts.getPerson($stateParams.email);
 
     $scope.save = function () {
-        $scope.contacts.removeContact($scope.contacts.selectedPerson);
+        $scope.contacts.updateContact($scope.contacts.selectedPerson);
         $state.go('list');
     }
 
@@ -82,6 +87,22 @@ app.controller('PersonDetailController', function ($scope, $stateParams, $state,
         $scope.contacts.updateContact($scope.contacts.selectedPerson);
     }
 });
+
+// Person Detail Controller
+app.controller('PersonCreateController', function ($scope, $state, ContactService) {
+
+    $scope.mode = 'Create';
+
+    $scope.contacts = ContactService;
+
+    $scope.save = function () {
+        $scope.contacts.createContact($scope.contacts.selectedPerson)
+            .then( function () {
+                $state.go('list');
+            });
+    }
+});
+
 // Person List Controller
 app.controller('PersonListController', function ($scope, $modal, ContactService) {
 
@@ -102,14 +123,6 @@ app.controller('PersonListController', function ($scope, $modal, ContactService)
             show: true
         });
     };
-
-    $scope.createContact = function () {
-        $scope.contacts.createContact($scope.contacts.selectedPerson)
-            .then( function () {
-                $scope.createModal.hide();
-            });
-    }
-
 });
 
 // Contact Service

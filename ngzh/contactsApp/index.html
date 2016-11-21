@@ -17,19 +17,26 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand"
-                    href="/" >Lists of Things
+                    href="/" >Contacts
                 </a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a ui-sref="list">Search</a>
+                    </li>
+                    <li>
+                        <a ui-sref="create">Create</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 
     <div class="container main-content">
-        <toaster-container></toaster-container>
-        <div class="row">
-            <div ui-view>
+        <div ui-view></div>
 
-            </div>
-        </div>
     </div>
 
     <script src="./node_modules/angular/angular.min.js"></script>
