@@ -1,5 +1,16 @@
 <div class="col-md-12" >
+    <div class="row"
+         infinite-scroll="loadMore()"
+         infinite-scroll-distance="1"
+         infinite-scroll-immediate-check="false">
 
+        <cc-card ng-repeat="person in contacts.persons"
+                 user="person"
+                 delete-user="parentDeleteUser" >
+        </cc-card>
+
+    </div>
+<!--
     <table class="table table-bordered"
            infinite-scroll="loadMore()"
            infinite-scroll-distance="1"
@@ -38,6 +49,7 @@
             <td>{{ person.phonenumber}}</td>
         </tr>
     </table>
+    -->
     <!-- Warn when there are no matching contacts -->
     <div ng-show="contacts.persons.length == 0 && !contacts.isLoading">
         <div class="alert alert-info">
@@ -47,6 +59,6 @@
         </div>
     </div>
 
-    <cc-spinner is-loading="contacts.isLoading"></cc-spinner>
+    <cc-spinner is-loading="contacts.isLoading" message="Mooing..."></cc-spinner>
 
 </div>

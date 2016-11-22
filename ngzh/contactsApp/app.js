@@ -77,12 +77,35 @@ app.directive('ccSpinner', function () {
     // C : <div class="directive-name"></div>
     // Transclude will allow for html edits to the directive at the template level (false by default)
    return {
-       'transclude': true,
-       'restrict': 'E',
+       'restrict': 'AE',
        'templateUrl': 'templates/spinner.html',
        'scope': {
            // isolate scope for use with multiple scope functions
-           'isLoading': '='
+           'isLoading': '=',
+           'message': '@' // implement a string
+       }
+   }
+});
+
+// Business card
+app.directive('ccCard', function () {
+
+   return {
+       'transclude': true,
+       'restrict': 'AE',
+       'templateUrl': 'templates/card.html',
+       'scope': {
+            'user': '=',
+           'deleteUser': '&'
+       },
+       'controller': function ($scope, ContactService) {
+           $scope.isDeleting = false;
+           $scope.deleteUser = function () {
+               $scope.isDeleting = true;
+               ContactService.removeContact($scope.user).then(function () {
+                   $scope.isDeleting = false;
+               });
+           };
        }
    }
 });
@@ -110,17 +133,17 @@ app.controller('PersonDetailController', function ($scope, $stateParams, $state,
     $scope.contacts.selectedPerson = $scope.contacts.getPerson($stateParams.email);
 
     $scope.save = function () {
-        $scope.contacts.updateContact($scope.contacts.selectedPerson);
-        $state.go('list');
+        $scope.contacts.updateContact($scope.contacts.selectedPerson).then(function () {
+            $state.go('list');
+        });
     }
 
     $scope.remove = function () {
-        $scope.contacts.removeContact($scope.contacts.selectedPerson);
+        $scope.contacts.removeContact($scope.contacts.selectedPerson).then(function () {
+            $state.go('list');
+        });
     }
 
-    $scope.delete = function () {
-        $scope.contacts.updateContact($scope.contacts.selectedPerson);
-    }
 });
 
 // Person Detail Controller
@@ -149,6 +172,10 @@ app.controller('PersonListController', function ($scope, $modal, ContactService)
         console.log('Load More !!!');
         $scope.contacts.loadMore();
     };
+
+    $scope.parentDeleteUser = function (user) {
+        $scope.contacts.removeContact(user);
+    }
 
     $scope.showCreateModal = function () {
         $scope.contacts.selectedPerson = {};
