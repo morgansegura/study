@@ -71,8 +71,19 @@ app.factory('Contact', function ($resource){
 
 // Directives
 app.directive('ccSpinner', function () {
+    // (Attribute, Element, Class) A, E, C or any combination
+    // A :  <div directive-name></div>
+    // E : <directive-name></directive-name>
+    // C : <div class="directive-name"></div>
+    // Transclude will allow for html edits to the directive at the template level (false by default)
    return {
-       'templateUrl': 'templates/spinner.html'
+       'transclude': true,
+       'restrict': 'E',
+       'templateUrl': 'templates/spinner.html',
+       'scope': {
+           // isolate scope for use with multiple scope functions
+           'isLoading': '='
+       }
    }
 });
 
