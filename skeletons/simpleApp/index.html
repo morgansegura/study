@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="minmax">
+<head>
+    <meta charset="UTF-8">
+    <title>Controllers</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+    <link href="./node_modules/ladda/dist/ladda-themeless.min.css" rel="stylesheet" type="text/css" >
+    <link href="./css/main.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand"
+                   href="/"> Controllers
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container main-content" ng-controller="MinMaxCtrl">
+        <!--
+            http://html5pattern.com
+            http://hakim.se/ladda/
+        -->
+        <form ng-submit="onSubmit()"
+              novalidate="novalidate">
+            <div class="form-group">
+                <label for="name" class="control-label">Name</label>
+                <input type="text"
+                       class="form-control"
+                       ng-model="formModel.name"
+                       required="required"
+                       id="name" >
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="control-label">Email</label>
+                <input type="email"
+                       class="form-control"
+                       ng-model="formModel.email"
+                       id="email"
+                       required="required"
+                       name="email">
+
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="control-label">Username</label>
+                <input type="text"
+                       class="form-control"
+                       ng-model="formModel.username"
+                       ng-pattern="/^[A-Za-z0-9_]{1,15}$/"
+                       ng-minlength="7"
+                       ng-pattern-err-type="badUsername"
+                       required="required"
+                       id="username" >
+            </div>
+
+            <div class="form-group">
+                <label for="age" class="control-label">Age</label>
+                <input type="number"
+                       class="form-control"
+                       required="required"
+                       ng-model="formModel.age"
+                       min="18"
+                       max="64"
+                       ng-min-err-type="tooYoung"
+                       ng-max-err-type="tooOld"
+                       id="age" >
+            </div>
+
+            <div class="form-group">
+                <label for="age">Gender</label>
+                <select name="select"
+                        class="form-control control-label"
+                        ng-model="formModel.gender"
+                        required="required"
+                        id="gender" >
+                    <option value="">Please Choose</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="control-label">Password</label>
+                <input type="password"
+                       class="form-control"
+                       ng-model="formModel.password"
+                       required="required"
+                       ng-pattern="/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/"
+                       ng-pattern-err-type="badPassword"
+                       id="password" >
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary"
+                        ladda="submitting"
+                        data-style="expand-right"
+                        type="submit">
+                    <span ng-show="submitting">Registering</span>
+                    <span ng-show="!submitting">Register</span>
+                </button>
+            </div>
+
+            <pre>{{ formModel | json }}</pre>
+
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="./node_modules/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+    <script src="./node_modules/ladda/dist/spin.min.js"></script>
+    <script src="./node_modules/ladda/dist/ladda.min.js"></script>
+    <script src="./node_modules/angular-ladda/dist/angular-ladda.min.js"></script>
+
+    <!-- Controllers -->
+    <script src="app.js"></script>
+</body>
+</html>
