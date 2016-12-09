@@ -1,8 +1,15 @@
 <!doctype html>
-<html class="no-js">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="app"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title>FastShell by @_Karamii</title>
+    <title></title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -13,11 +20,15 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/style.min.css" rel="stylesheet">
+
+    <!--build:css css/styles.min.css-->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!--endbuild-->
 
     <script src="assets/components/modernizr/modernizr.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>  
   </head>
-  <body>
+  <body ng-controller="MainCtrl">
 
     <header class="header" role="banner">
     <!--
@@ -36,9 +47,8 @@
       </nav>
     </header>
 
-    <main class="main" role="main">
-        <h4 class="notes headline"></h4>
-        <ul class="notes text"></ul>
+    <main id="main" class="main" role="main">
+      
     </main>
 
     <aside class="sidebar" role="complementary">
@@ -48,9 +58,11 @@
     <footer class="footer" role="contentinfo">
 
     </footer>
-
     <script src="assets/components/jquery/jquery.min.js"></script>
-    <script src="assets/js/scripts.min.js"></script>
+    <!--build:js js/app.min.js -->
+    <script src="assets/js/lib/scripts.js"></script>
+    <script src="assets/js/app.js"></script>
+    <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
