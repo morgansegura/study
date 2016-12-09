@@ -14,6 +14,7 @@
     "type": "echo \"Error: no test specified\" && exit "
   },
   "devDependencies": {
+    "angular-ui-router": "^0.3.2",
     "browser-sync": "^2.7.12",
     "del": "^2.0.2",
     "gulp": "^3.9.0",

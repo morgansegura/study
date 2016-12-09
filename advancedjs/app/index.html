@@ -6,10 +6,10 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" ng-app="app"> <!--<![endif]-->
+<html class="no-js" ng-app="ajs"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Advanced JS</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -21,48 +21,47 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <!--build:css css/styles.min.css-->
+    <!--build:css assets/css/styles.css-->
     <link rel="stylesheet" href="assets/css/styles.css">
     <!--endbuild-->
-
+    <script src="assets/components/jquery/jquery.min.js"></script>
     <script src="assets/components/modernizr/modernizr.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>  
-  </head>
-  <body ng-controller="MainCtrl">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 
-    <header class="header" role="banner">
-    <!--
-      <div class="logo">
-        <a href="/">
-          <img src="assets/img/logo.png" alt="Logo">
-        </a>
+    <!--build:js assets/js/app.js -->
+    <script src="assets/js/lib/scripts.js"></script>
+    <script src="assets/js/app.js"></script>
+    <!-- endbuild --> 
+  </head>
+
+  <body ng-controller="MainController">
+
+    <header class="navbar navbar-default header container" role="banner">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/home">Advanced JS</a>
       </div>
-      -->
-      <nav class="nav" role="navigation">
-        <ul>
-          <li>
-            <a href="/"></a>
-          </li>
+
+      <nav role="navigation">
+        <ul class="nav navbar-nav">
+          <li ui-sref-active="active"><a ui-sref="home" href="/home">Home</a></li>
+          <li ui-sref-active="active"><a ui-sref="notes">Course Notes</a></li>
+          <li ui-sref-active="active"><a ui-sref="quizzes">Quizes</a></li>
         </ul>
       </nav>
     </header>
 
-    <main id="main" class="main" role="main">
-      
+    <main class="main container buffer" role="main">
+      <ui-view></ui-view>
     </main>
 
     <aside class="sidebar" role="complementary">
 
     </aside>
 
-    <footer class="footer" role="contentinfo">
+    <footer class="footer container" role="contentinfo">
 
     </footer>
-    <script src="assets/components/jquery/jquery.min.js"></script>
-    <!--build:js js/app.min.js -->
-    <script src="assets/js/lib/scripts.js"></script>
-    <script src="assets/js/app.js"></script>
-    <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
