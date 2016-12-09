@@ -1,1 +1,42 @@
-<h1>This is the Notes page!</h1>
+<section class="container notes" ng-controller="NotesController">
+	<h1>{{ headline }}</h1>
+
+	<div class="section" ng-repeat="note in notes">
+
+		<div class="section-body">
+
+			<h3>
+				{{ note.topic }}
+			</h3>
+
+			<h4>
+				{{ note.answer }}
+			</h4>
+
+			<ul>
+				<p><b>Pros</b></p>
+				<li ng-show="!pros.length" ng-repeat="pros in note.pros">
+					<p>{{ pros }}</p>	
+				</li>
+			</ul>
+
+			<p><b>Cons</b></p>
+			<ul>
+				<li ng-repeat="cons in note.cons">
+					<p>{{ cons }}</p>	
+				</li>
+			</ul>			
+			<p ng-repeat="sideNote in note.sideNote">
+				{{ sideNote }}
+			</p>
+
+			<p ng-repeat="quote in note.quotes">
+				{{ quote }}
+			</p>
+			<hr>
+		</div>
+
+	</div>
+
+
+</section>
